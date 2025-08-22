@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="stone_paper_seezer.css">
+    <title>Circket</title>
+
+</head>
+
+<body>
+   
+        <h1 id = "heading"> Choose Rock Paper Scissor </h1> <br>
+
+       
+          
+          
+    
+        <div id = "button">
+
+        <button class="sps" onclick="value ='rock' ; randomnumber = random_number() ; compare(value , randomnumber) ;  "><img src="rock.jpeg" alt="rock"></button>
+
+        <button class="sps"  ; onclick="value = 'paper'; randomnumber = random_number() ; compare(value , randomnumber) ;   "><img  src="paper.png" alt="paper"></button>
+
+        <button class="sps" onclick="value ='seezer' ; randomnumber = random_number() ; compare(value , randomnumber) ; "><img src="scissor.png" alt="scissor"></button>
+
+        </div>
+
+        <div id = "input">
+            
+            <div id = "result1">Lets play</div> <br>
+            <div id="result2">counting</div> <br>
+            <button id="reset" onclick="resetdata();">Reset</button>
+
+        </div>
+
+<!--load confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+<script>
+    function fireCrackers() {
+    // 🎉 Fire confetti
+    confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+    });
+
+    //  Add background flash effect
+    document.body.classList.add("flash-win");
+
+    // remove class after animation so it can trigger again next win
+    setTimeout(() => {
+        document.body.classList.remove("flash-win");
+    }, 500);
+}
+
+   function showCryingEmoji() {
+       const emoji = document.createElement("div");
+       emoji.className = "lose-emoji";
+       emoji.innerText = "😭";
+       document.body.appendChild(emoji);
+       setTimeout(() => emoji.remove(), 2000);
+   }
+</script>
+
+
+<script>
+    
+
+    let value;
+    let randomnumber;
+
+    function random_number() {
+        let random = 3 * Math.random();
+        if (random <= 1) {
+            return "rock";
+        } else if (random <= 2) {
+            return "paper";
+        } else {
+            return "seezer";
+        }
+    }
+
+    function compare(value, randomnumber) {
+        if (value === "rock") {
+            if (value === randomnumber) {
+                document.querySelector('#result1').innerText = "Tie\nBoth selected the same";
+                data.tie++;
+            } else if (randomnumber === "paper") {
+                document.querySelector('#result1').innerText = "You Lost\nPaper Beats Rock";
+                data.lost++;
+                showCryingEmoji();
+            } else {
+                document.querySelector('#result1').innerText = "You Win\nRock Beats Scissor";
+                data.win++;
+                fireCrackers();
+            }
+        }
+        else if (value === "paper") {
+            if (value === randomnumber) {
+                document.querySelector('#result1').innerText = "Tie\nBoth selected the same";
+                data.tie++;
+            } else if (randomnumber === "seezer") {
+                document.querySelector('#result1').innerText = "You Lost\nScissor Beats Paper";
+                data.lost++;
+                showCryingEmoji();
+            } else {
+                document.querySelector('#result1').innerText = "You Win\nPaper Beats Rock";
+                data.win++;
+                fireCrackers();
+            }
+        }
+        else { // seezer
+            if (value === randomnumber) {
+                document.querySelector('#result1').innerText = "Tie\nBoth selected the same";
+                data.tie++;
+            } else if (randomnumber === "rock") {
+                document.querySelector('#result1').innerText = "You Lost\nRock Beats Scissor";
+                data.lost++;
+                showCryingEmoji();
+            } else {
+                document.querySelector('#result1').innerText = "You Win\nScissor Beats Paper";
+                data.win++;
+                fireCrackers();
+            }
+        }
+
+        data.total_match++;
+        storedata();
+        updateScoreboard();
+    }
+     
+
+    //  Load data from localStorage if exists
+    let datastr = localStorage.getItem('data');
+    let data;
+    if (datastr) {
+        data = JSON.parse(datastr);
+    } else {
+        data = {
+            win: 0,
+            lost: 0,
+            tie: 0,
+            total_match: 0,
+        };
+    }
+
+    // Save to localStorage
+    function storedata() {
+        localStorage.setItem("data", JSON.stringify(data));
+    }
+
+    //  Reset scoreboard
+    function resetdata() {
+        data = { win: 0, lost: 0, tie: 0, total_match: 0 };
+        localStorage.setItem("data", JSON.stringify(data));
+        updateScoreboard();
+        document.querySelector('#result1').innerText = "Lets play";
+    }
+
+    //  Update scoreboard
+    function updateScoreboard() {
+        document.querySelector('#result2').innerHTML =
+            `Win: ${data.win} <br>
+             Loss: ${data.lost} <br>
+             Tie: ${data.tie} <br>
+             Total: ${data.total_match}`;
+    }
+
+    //  Show correct scoreboard on page load
+    updateScoreboard();
+</script>
+
+   
+</body>
+</html>

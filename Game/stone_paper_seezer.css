@@ -1,0 +1,102 @@
+body{
+    background-color: rgb(233, 136, 16);
+}
+#heading{
+    text-align: center;
+}
+
+#button{
+    display: flex;
+   justify-content: center;
+   
+   
+}
+button img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 100%;
+  
+
+}
+
+
+.sps{
+    margin: 33px;
+    cursor: pointer;
+    border-radius: 100%;
+     transition: transform 0.2s ease;  
+}
+
+.sps:active {
+  transform: scale(1.2);   /* increase size when clicked */
+}
+
+#input{
+    
+    text-align: center;
+    
+}
+
+#result1 {
+  width: 300px;
+  min-height: 60px;
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  background: white;
+  ;
+          
+  margin: 20px auto;     /* auto centers horizontally */
+  text-align: center;
+
+   font-weight: bold;
+}
+#result2 {
+  border: 2px solid black;
+  width: 200px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 0 auto;      /* center horizontally */
+  text-align: left;    /* align text inside */
+  background: #f8f8f8;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#reset{
+    margin-top: 20px;
+    height: 30 ;
+    width: 80;
+    border-radius: 10%;
+    font-size: x-large;
+    border: solid rgb(193, 7, 72);
+}
+
+.flash-win {
+  animation: flash-bg 0.5s ease;
+}
+
+@keyframes flash-bg {
+  0%   { background-color: #00ff66; }  /* bright green */
+  50%  { background-color: #ffffff; }  /* white */
+  100% { background-color: rgb(233, 136, 16); } /* your original orange */
+}
+
+.lose-emoji {
+  position: fixed;
+  top: 50%;          /* middle vertically */
+  left: 50%;         /* middle horizontally */
+  transform: translate(-50%, -50%);
+  font-size: 60px;   /* big emoji */
+  animation: floatUp 2s ease-out forwards;
+  pointer-events: none; /* don’t block clicks */
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -150%) scale(1.5); }
+}
+
+
+
