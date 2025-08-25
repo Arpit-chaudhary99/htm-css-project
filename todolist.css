@@ -1,0 +1,88 @@
+
+
+
+
+
+body {
+  background-color: #c79248;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  margin-top: 7%;
+}
+
+/* White center box */
+.main-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Title */
+.main-box h1 {
+  margin-bottom: 20px;
+}
+
+/* Input Row */
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+#container input,
+#container button {
+  padding: 8px 12px;
+  font-size: 20px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+#container button {
+  cursor: pointer;
+  background-color: #f85e2b;
+  padding-inline: 20px;
+  
+}
+
+#container button:hover {
+  background-color: #f49778 ;
+}
+
+
+/* Task List */
+#taskList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#taskList li {
+  background: #f9f9f9;
+  margin: 8px 0;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.remove-btn {
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
